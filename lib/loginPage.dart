@@ -29,6 +29,9 @@ class _LoginPageState extends State<LoginPage> {
                       fontSize: 20
                     ),
                   ),
+                  SizedBox(
+                    height: 30,
+                  ),
                   Text(
                     "Login",
                     style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
@@ -59,13 +62,48 @@ class _LoginPageState extends State<LoginPage> {
               ),
               style: TextStyle(color: Colors.black), // Define a cor do texto do campo
             ),
+            SizedBox(
+              height: 10,
+            ),
+            TextField(
+              cursorColor: Colors.grey,
+              decoration: InputDecoration(
+                labelText: 'Password',
+                suffixIcon: Icon(
+                  Icons.person,
+                  color: Colors.grey,
+                ),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black),
+                ),
+                labelStyle: TextStyle(color: Colors.black),
+
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black),
+                ),
+              ),
+              style: TextStyle(color: Colors.black),
+            ),
 
             SizedBox(
               height: 50,
             ),
-            ElevatedButton(
-                onPressed: (){},
-                child: Text("Login")),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 50),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Color(0xffeb89b5))
+
+                      ),
+                        onPressed: (){},
+                        child: Text("Login")),
+                  ),
+                ],
+              ),
+            ),
             TextButton(
                 onPressed: (){},
                 child: Text(
