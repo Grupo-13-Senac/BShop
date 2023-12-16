@@ -1,0 +1,1 @@
+ /Users/lucas/Documents/GitHub/Beacons_Mercado/.dart_tool/flutter_build/d3955a625f10aa2f2689755a1bb5d5ed/native_assets.yaml: 
