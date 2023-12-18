@@ -1,5 +1,5 @@
 import 'package:bshop/loginPage.dart';
-import 'package:bshop/scanPage.dart';
+import 'package:bshop/bluetooth%20controller/scanPage.dart';
 import 'package:bshop/splashScreen.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: ScanPage(),
+      home: HomePage(),
       debugShowCheckedModeBanner: false,
     );
   }
