@@ -1,5 +1,6 @@
+import 'package:bshop/colors.dart';
 import 'package:bshop/pages/compras.dart';
-import 'package:bshop/pages/configuracoes.dart';
+import 'package:bshop/pages/perfil.dart';
 import 'package:bshop/pages/mercados.dart';
 import 'package:bshop/pages/minhaLista.dart';
 import 'package:ff_navigation_bar_plus/ff_navigation_bar_plus.dart';
@@ -16,10 +17,10 @@ class _HomePageState extends State<HomePage> {
   int selectedIndex = 0;
 
   List<Widget> pages = [
-    minhaLista(),
-    mercados(),
-    compras(),
-    configuracoes(),
+    MinhaLista(),
+    Mercados(),
+    Compras(),
+    Perfil(),
   ];
 
   @override
@@ -29,8 +30,8 @@ class _HomePageState extends State<HomePage> {
         bottomNavigationBar: FFNavigationBar(
             theme: FFNavigationBarTheme(
               barBackgroundColor: Colors.white,
-              selectedItemBorderColor: Color(0xfffcb5d2),
-              selectedItemBackgroundColor: Color(0xffeb89b5),
+              selectedItemBorderColor: kLightPrimareColor,
+              selectedItemBackgroundColor: kPrimareColor,
               selectedItemIconColor: Colors.white,
               selectedItemLabelColor: Colors.black,
             ),
@@ -42,11 +43,11 @@ class _HomePageState extends State<HomePage> {
             },
             items: [
           FFNavigationBarItem(
-            iconData: Icons.calendar_today,
+            iconData: Icons.checklist,
             label: 'Minha Lista',
           ),
           FFNavigationBarItem(
-            iconData: Icons.people,
+            iconData: Icons.shopping_cart_rounded,
             label: 'Mercados',
           ),
           FFNavigationBarItem(
@@ -54,8 +55,8 @@ class _HomePageState extends State<HomePage> {
             label: 'Compras',
           ),
           FFNavigationBarItem(
-            iconData: Icons.note,
-            label: 'Configurações',
+            iconData: Icons.person,
+            label: 'Perfil',
           ),
         ]));
   }

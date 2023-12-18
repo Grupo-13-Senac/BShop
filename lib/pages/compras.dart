@@ -1,11 +1,14 @@
+import 'package:bshop/colors.dart';
 import 'package:flutter/material.dart';
 
-class compras extends StatelessWidget {
+class Compras extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Compras'),
+        backgroundColor: kPrimareColor,
+        title: Text('Minhas Compras',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
       ),
       body: Center(
         child: Text('Compras Page Content'),

@@ -1,11 +1,14 @@
+import 'package:bshop/colors.dart';
 import 'package:flutter/material.dart';
 
-class mercados extends StatelessWidget {
+class Mercados extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Mercados'),
+        backgroundColor: kPrimareColor,
+        title: Text('Mercados',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
       ),
       body: Center(
         child: Text('Mercados Page Content'),
