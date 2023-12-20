@@ -83,7 +83,7 @@ class _MinhaListaState extends State<MinhaLista> {
     _loadList();
     _loadCheckedItems(); // Carregar a lista de itens marcados quando o widget é criado
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

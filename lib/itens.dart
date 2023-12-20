@@ -28,3 +28,10 @@ List<String> sugestoes = [
   "Chá de canela", "Chá de rooibos", "Chá de valeriana", "Chá de alcaçuz",
   "Chá de dente-de-leão"
 ];
+
+
+List<String> mercados = ["FreshMarket", "Organic Market", "Family SuperMarket",
+  "Geni Mercado", "SuperMarket", "Brand SuperMarket", "Market Tagune",
+  "Caminho Supermercado", "ECO Market", "Ofertas Mix Supermercado", "DeliPraça Foods",
+"Mercado Extra", "BoaCompra Supermecados", "Dia Supermercado", "Go Market"
+];

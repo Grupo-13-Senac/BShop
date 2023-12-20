@@ -1,7 +1,13 @@
 import 'package:bshop/colors.dart';
+import 'package:bshop/pages/loginPage.dart';
 import 'package:flutter/material.dart';
 
-class Perfil extends StatelessWidget {
+class Perfil extends StatefulWidget {
+  @override
+  State<Perfil> createState() => _PerfilState();
+}
+
+class _PerfilState extends State<Perfil> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,7 +129,12 @@ class Perfil extends StatelessWidget {
                               style: ButtonStyle(
                                 backgroundColor: MaterialStateProperty.all(kLightPrimareColor)
                               ),
-                                onPressed: (){},
+                                onPressed: (){
+                                setState(() {
+                                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                                      builder: (BuildContext context) => LoginPage()));
+                                });
+                                },
                                 child: Text('Sair',
                                   style: TextStyle(
                                       color: Colors.white,
