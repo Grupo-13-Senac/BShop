@@ -1,5 +1,5 @@
 # 1. Visão Geral do Aplicativo
-O aplicativo de lista de compras foi desenvolvido utilizando o framework Flutter. Ele possui a capacidade de interagir com beacons baseados em ESP32, instalados nos corredores do mercado. O objetivo é proporcionar uma experiência personalizada ao usuário, indicando a localização dos itens da lista nos corredores do mercado.
+O BShop foi desenvolvido utilizando o framework Flutter. Ele possui a capacidade de interagir com beacons baseados em ESP32, instalados nos corredores do mercado. O objetivo é proporcionar uma experiência personalizada ao usuário, indicando a localização dos itens da lista nos corredores do mercado.
 
 # 2. Funcionalidades Principais
 ## 2.1 Lista de Compras
