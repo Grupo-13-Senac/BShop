@@ -4,11 +4,9 @@ O aplicativo de lista de compras foi desenvolvido utilizando o framework Flutter
 # 2. Funcionalidades Principais
 ## 2.1 Lista de Compras
 - ### 2.1.1 Adição de Itens
-  - Os usuários podem adicionar itens à lista de compras, especificando a quantidade desejada.
+  - Os usuários podem adicionar itens à lista de compras.
 - ### 2.1.2 Remoção de Itens
   - Exclusão de itens da lista, se necessário.
-- ### 2.1.3 Atualização de Quantidade
-  - Os usuários podem ajustar a quantidade de cada item na lista.
 
 ## 2.2 Integração com Beacons
 - ### 2.2.1 Registro de Beacons
