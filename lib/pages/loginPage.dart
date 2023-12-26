@@ -1,4 +1,5 @@
 import 'package:bshop/pages/homePage.dart';
+import 'package:bshop/splashScreen.dart';
 import 'package:bshop/userLogin.dart';
 import 'package:flutter/material.dart';
 
@@ -111,7 +112,7 @@ class _LoginPageState extends State<LoginPage> {
                           setState(() {
                             if(_controllerPass.text == password && _controllerUser.text == user){
                               Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                  builder: (BuildContext context) => HomePage()));
+                                  builder: (BuildContext context) => SplashScreen()));
                               _controllerPass.clear();
                               _controllerUser.clear();
                             }
