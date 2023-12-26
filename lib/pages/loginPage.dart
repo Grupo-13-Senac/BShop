@@ -22,7 +22,7 @@ TextEditingController _controllerPass = TextEditingController();
 
 class _LoginPageState extends State<LoginPage> {
 
-  bool _visible = false;
+  bool _visible = true;
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,6 @@
 import 'package:bshop/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class Compras extends StatelessWidget {
   @override
@@ -11,7 +12,13 @@ class Compras extends StatelessWidget {
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
       ),
       body: Center(
-        child: Text('Compras Page Content'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Lottie.asset('assets/animation_cart.json',height: 200),
+            Text('Você ainda não realizou compras!'),
+          ],
+        ),
       ),
     );
   }

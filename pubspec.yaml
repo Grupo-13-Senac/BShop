@@ -41,6 +41,7 @@ dependencies:
   flutter_blue: ^0.8.0
   flutter_svg: ^2.0.9
   shared_preferences: ^2.2.2
+  lottie: ^2.7.0
 
 dev_dependencies:
   flutter_test:

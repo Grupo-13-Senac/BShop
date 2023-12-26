@@ -8,7 +8,7 @@ class Perfil extends StatefulWidget {
   State<Perfil> createState() => _PerfilState();
 }
 
-bool visible = false;
+bool _visible = true;
 int passCont = currentUser == LoggedInUser.user1 ? password1.length : password2.length;
 
 class _PerfilState extends State<Perfil> {
@@ -35,6 +35,7 @@ class _PerfilState extends State<Perfil> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CircleAvatar(
+                      child: Icon(Icons.person, size: 120, color: Colors.white60,),
                       backgroundColor: kLightPrimareColor,
                       radius: MediaQuery.of(context).size.height * 0.1,
                     ),
@@ -103,7 +104,7 @@ class _PerfilState extends State<Perfil> {
                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                      children: [
                        Text(
-                         visible ? ("*" * passCont).toString() :
+                         _visible ? ("*" * passCont).toString() :
                          currentUser == LoggedInUser.user1 ? password1 : password2,
                          style: TextStyle(
                            color: Colors.grey.shade700,
@@ -114,11 +115,11 @@ class _PerfilState extends State<Perfil> {
                        GestureDetector(
                          onTap: (){
                           setState(() {
-                            visible = !visible;
-                            print(visible);
+                            _visible = !_visible;
+                            print(_visible);
                           });
                          },
-                         child: visible ?
+                         child: _visible ?
                          Icon(Icons.visibility, color: Colors.grey) :
                          Icon(Icons.visibility_off, color: Colors.grey),
                        )
