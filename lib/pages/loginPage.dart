@@ -3,6 +3,13 @@ import 'package:bshop/splashScreen.dart';
 import 'package:bshop/userLogin.dart';
 import 'package:flutter/material.dart';
 
+// globals.dart
+
+enum LoggedInUser { user1, user2 }
+
+LoggedInUser? currentUser;
+
+
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -14,6 +21,9 @@ TextEditingController _controllerUser = TextEditingController();
 TextEditingController _controllerPass = TextEditingController();
 
 class _LoginPageState extends State<LoginPage> {
+
+  bool _visible = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,11 +87,19 @@ class _LoginPageState extends State<LoginPage> {
               TextField(
                 controller: _controllerPass,
                 cursorColor: Colors.grey,
+                obscureText: _visible,
                 decoration: InputDecoration(
                   labelText: 'Password',
-                  suffixIcon: Icon(
-                    Icons.remove_red_eye,
-                    color: Colors.grey,
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _visible ? Icons.visibility : Icons.visibility_off,
+                      color: Colors.grey,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _visible = !_visible;
+                      });
+                    },
                   ),
                   focusedBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.black),
@@ -108,16 +126,24 @@ class _LoginPageState extends State<LoginPage> {
                           backgroundColor: MaterialStateProperty.all(Color(0xffeb89b5))
 
                         ),
-                          onPressed: (){
-                          setState(() {
-                            if(_controllerPass.text == password && _controllerUser.text == user){
-                              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                  builder: (BuildContext context) => SplashScreen()));
-                              _controllerPass.clear();
-                              _controllerUser.clear();
-                            }
-                          });
+                          onPressed: () {
+                            setState(() {
+                              if (_controllerPass.text == password1 && _controllerUser.text == user1) {
+                                currentUser = LoggedInUser.user1;
+                                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                                    builder: (BuildContext context) => SplashScreen()));
+                                _controllerPass.clear();
+                                _controllerUser.clear();
+                              } else if (_controllerPass.text == password2 && _controllerUser.text == user2) {
+                                currentUser = LoggedInUser.user2;
+                                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                                    builder: (BuildContext context) => SplashScreen()));
+                                _controllerPass.clear();
+                                _controllerUser.clear();
+                              }
+                            });
                           },
+
                           child: Text("Login", style: TextStyle(color: Colors.white),)),
                     ),
                   ],

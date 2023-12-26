@@ -1,11 +1,15 @@
 import 'package:bshop/colors.dart';
 import 'package:bshop/pages/loginPage.dart';
+import 'package:bshop/userLogin.dart';
 import 'package:flutter/material.dart';
 
 class Perfil extends StatefulWidget {
   @override
   State<Perfil> createState() => _PerfilState();
 }
+
+bool visible = false;
+int passCont = currentUser == LoggedInUser.user1 ? password1.length : password2.length;
 
 class _PerfilState extends State<Perfil> {
   @override
@@ -36,7 +40,7 @@ class _PerfilState extends State<Perfil> {
                     ),
                     SizedBox(height: 15),
                     Text(
-                      'Nome Usuário',
+                    currentUser == LoggedInUser.user1 ? name1 : name2,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: MediaQuery.of(context).size.height * 0.025,
@@ -62,7 +66,7 @@ class _PerfilState extends State<Perfil> {
                       ),
                     ),
                     Text(
-                      'lucascostabustamante@gmail.com',
+                      currentUser == LoggedInUser.user1 ? name1 : name2,
                       style: TextStyle(
                         color: Colors.grey.shade700,
                         fontWeight: FontWeight.w600,
@@ -79,7 +83,7 @@ class _PerfilState extends State<Perfil> {
                       ),
                     ),
                     Text(
-                      'lucascostabustamante@gmail.com',
+                      currentUser == LoggedInUser.user1 ? user1 : user2,
                       style: TextStyle(
                         color: Colors.grey.shade700,
                         fontWeight: FontWeight.w600,
@@ -95,14 +99,31 @@ class _PerfilState extends State<Perfil> {
                         textAlign: TextAlign.start,
                       ),
                     ),
-                    Text(
-                      'lucascostabustamante@gmail.com',
-                      style: TextStyle(
-                        color: Colors.grey.shade700,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      textAlign: TextAlign.start,
-                    ),
+                   Row(
+                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                     children: [
+                       Text(
+                         visible ? ("*" * passCont).toString() :
+                         currentUser == LoggedInUser.user1 ? password1 : password2,
+                         style: TextStyle(
+                           color: Colors.grey.shade700,
+                           fontWeight: FontWeight.w600,
+                         ),
+                         textAlign: TextAlign.start,
+                       ),
+                       GestureDetector(
+                         onTap: (){
+                          setState(() {
+                            visible = !visible;
+                            print(visible);
+                          });
+                         },
+                         child: visible ?
+                         Icon(Icons.visibility, color: Colors.grey) :
+                         Icon(Icons.visibility_off, color: Colors.grey),
+                       )
+                     ],
+                   ),
                     Divider(),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10),
@@ -113,7 +134,7 @@ class _PerfilState extends State<Perfil> {
                       ),
                     ),
                     Text(
-                      'lucascostabustamante@gmail.com',
+                      currentUser == LoggedInUser.user1 ? telefone1 : telefone2,
                       style: TextStyle(
                         color: Colors.grey.shade700,
                         fontWeight: FontWeight.w600,
