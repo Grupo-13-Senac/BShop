@@ -23,6 +23,9 @@ O BShop foi desenvolvido utilizando o framework Flutter. Ele possui a capacidade
   - A lista de compras é automaticamente atualizada com base na proximidade dos beacons.
 
 # 3. Integração com Beacons (ESP32)
+<p float="left">
+  <img src="/assets/beacon.jpg" width="350" />
+
 ## 3.1 Hardware
 - ### 3.1.1 Dispositivos Beacon
   - Beacons baseados em ESP32 são instalados nos corredores do mercado.
