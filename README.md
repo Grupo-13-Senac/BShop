@@ -24,7 +24,7 @@ O BShop foi desenvolvido utilizando o framework Flutter. Ele possui a capacidade
 
 # 3. Integração com Beacons (ESP32)
 <p float="left">
-  <img src="/assets/beacon.jpg" width="350" />
+  <img src="/assets/beacon.jpg" width="300" />
 
 ## 3.1 Hardware
 - ### 3.1.1 Dispositivos Beacon
