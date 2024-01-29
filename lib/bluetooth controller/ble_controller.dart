@@ -22,7 +22,12 @@ class BleController extends GetxController {
 
   // Método para iniciar a varredura de dispositivos BLE
   Future<void> scanDevices() async {
+    if (await _requestPermissions()) {
       flutterBlue.startScan(timeout: Duration(seconds: 4));
+    } else {
+      // Lide com o caso em que as permissões não foram concedidas
+      print("Permissões Bluetooth não concedidas.");
+    }
   }
 
   // Stream para obter os resultados da varredura
@@ -99,15 +104,13 @@ class _ScanPageState extends State<ScanPage> {
                         ),
                       );
                     } else {
-
-
+                      // Reinicia o timer se nenhum dispositivo ESP32 for encontrado
                       _timer.cancel();
                       _timer = Timer.periodic(Duration(seconds: 3), (_) {
                         Get.find<BleController>().scanDevices();
                       });
 
                       return Center(child: Text("Nenhum dispositivo ESP32 encontrado"));
-
                     }
                   } else {
                     // Mostra uma mensagem durante a varredura
