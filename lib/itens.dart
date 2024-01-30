@@ -1,7 +1,7 @@
 List<String> sugestoes = [
   "Maçã", "Banana", "Laranja", "Cenoura", "Alface", "Tomate", "Leite", "Queijo",
   "Iogurte", "Manteiga", "Ovos", "Carne bovina", "Frango", "Peixe", "Salsicha",
-  "Bacon", "Pão de forma", "Cereal matinal", "Arroz", "Massa", "Pizza",
+  "Bacon", "Pão de forma", "Cereal matinal", "Arroz", "", "Pizza",
   "Vegetais congelados", "Sorvete", "Lasanha", "Refrigerante", "Água mineral",
   "Suco", "Cerveja", "Vinho", "Batata frita", "Bolacha", "Chocolate", "Bala",
   "Pipoca", "Detergente", "Sabão em pó", "Desinfetante", "Esponja",
@@ -26,7 +26,8 @@ List<String> sugestoes = [
   "Chá de hibisco", "Chá de gengibre", "Chá de menta", "Chá de frutas",
   "Chá de erva-cidreira", "Chá de erva-doce", "Chá de capim-limão",
   "Chá de canela", "Chá de rooibos", "Chá de valeriana", "Chá de alcaçuz",
-  "Chá de dente-de-leão"
+  "Chá de dente-de-leão", "Macarrão Parafuso", "Macarrão Espaguete",
+  "Massa de Lasanha", "Macarrão Instantâneo"
 ];
 
 

@@ -99,7 +99,7 @@ class _ScanPageState extends State<ScanPage> {
                           child: ListTile(
                             title: Text(esp32Devices[index].device.name ?? ''),
                             subtitle: Text(esp32Devices[index].device.id.id),
-                            trailing: Text(esp32Devices[index].rssi.toString()),
+                            trailing: Text(esp32Devices[index].rssi.toString(), style: TextStyle(color: Colors.red)),
                           ),
                         ),
                       );
