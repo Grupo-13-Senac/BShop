@@ -147,7 +147,7 @@ class _MinhaListaState extends State<MinhaLista> {
           if (result.device.name?.toLowerCase() == 'esp32 beacon test' && result.rssi >= -50) {
             esp32Found = true;
             rssiValue = result.rssi;  // Armazena o valor rssi
-
+            itens = itens.map((item) => item.toLowerCase()).toList();
             // Verifica se "molho de tomate" ou "macarrão parafuso" estão na lista e não estão marcados
             if (itens.contains('molho de tomate') && !itensMarcados.contains(itens.indexOf('molho de tomate'))) {
               foundItems.add('molho de tomate');
