@@ -8,6 +8,7 @@ O BShop foi desenvolvido utilizando o framework Flutter. Ele possui a capacidade
   <img src="/assets/screenshots/screen4.jpg" width="140" />
   <img src="/assets/screenshots/screen5.jpg" width="140" />
   <img src="/assets/screenshots/screen6.jpg" width="140" />
+  <img src="/assets/screenshots/screen7.jpg" width="140" />
  
 # 2. Funcionalidades Principais
 ## 2.1 Lista de Compras

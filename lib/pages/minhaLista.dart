@@ -250,7 +250,9 @@ class _MinhaListaState extends State<MinhaLista> {
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          child: Text('Cancelar'),
+                          child: Text('Cancelar', style: TextStyle(
+                            color: kPrimareColor
+                          ),),
                         ),
                       ],
                     ),
@@ -264,8 +266,12 @@ class _MinhaListaState extends State<MinhaLista> {
       ),
       appBar: AppBar(
         backgroundColor: kPrimareColor,
-        title: Text(
+        title: /*Text(
           'Minha Lista - RSSI: $rssiValue',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),*/
+        Text(
+          'Minha Lista',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ),
