@@ -7,7 +7,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // Importações necessárias para o código
-import 'package:bshop/colors.dart';
+import 'package:bshop/Design/colors.dart';
 
 void main() {
   runApp(MyApp());
@@ -92,6 +92,9 @@ class _MinhaListaState extends State<MinhaLista> {
     bool esp32Found = false;
     List<String> foundItems = [];
 
+///Editar
+    ///Lista de itens listados pelo Beacon
+    ///RSSI de distancia do Beacon
     for (var result in scanResults) {
       if (result.device.name?.toLowerCase() == 'esp32 beacon test' && result.rssi >= -50) {
         esp32Found = true;
@@ -212,7 +215,9 @@ class _MinhaListaState extends State<MinhaLista> {
             context: context,
             builder: (BuildContext context) {
               return AlertDialog(
-                title: Text('Adicionar Item'),
+                title: Text('Adicionar Item', style: TextStyle(
+                  color: kPrimareColor, fontWeight: FontWeight.bold
+                ),),
                 content: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [

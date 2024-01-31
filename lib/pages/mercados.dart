@@ -1,4 +1,4 @@
-import 'package:bshop/colors.dart';
+import 'package:bshop/Design/colors.dart';
 import 'package:bshop/itens.dart';
 import 'package:flutter/material.dart';
 

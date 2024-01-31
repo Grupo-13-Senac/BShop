@@ -1,6 +1,6 @@
-import 'package:bshop/colors.dart';
+import 'package:bshop/Design/colors.dart';
 import 'package:bshop/pages/homePage.dart';
-import 'package:bshop/splashScreen.dart';
+import 'package:bshop/Design/splashScreen.dart';
 import 'package:bshop/userLogin.dart';
 import 'package:flutter/material.dart';
 
@@ -24,6 +24,8 @@ TextEditingController _controllerPass = TextEditingController();
 class _LoginPageState extends State<LoginPage> {
 
   bool _visible = true;
+  bool _conected = false;
+  String loginerror = "";
 
   @override
   Widget build(BuildContext context) {
@@ -113,10 +115,28 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 style: TextStyle(color: Colors.black),
               ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                child: Row(
+                  children: [
+                    Text('Manter conectado'),
+                    IconButton(
+                      icon: _conected
+                          ? Icon(Icons.check_box, color: kPrimareColor) // Substituí por uma cor padrão, substitua conforme necessário
+                          : Icon(Icons.check_box_outline_blank, color: kSecondaryColor,),
+                      onPressed: () {
+                        setState(() {
+                          _conected = !_conected;
 
-              SizedBox(
-                height: 50,
+                        });
+                      },
+                    )
+                  ],
+                ),
               ),
+              Text(loginerror, style: TextStyle(color: Colors.red,
+              fontWeight: FontWeight.w400),),
+              SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 50),
                 child: Row(
@@ -135,12 +155,18 @@ class _LoginPageState extends State<LoginPage> {
                                     builder: (BuildContext context) => SplashScreen()));
                                 _controllerPass.clear();
                                 _controllerUser.clear();
+                                loginerror = "";
                               } else if (_controllerPass.text == password2 && _controllerUser.text == user2) {
                                 currentUser = LoggedInUser.user2;
                                 Navigator.of(context).pushReplacement(MaterialPageRoute(
                                     builder: (BuildContext context) => SplashScreen()));
                                 _controllerPass.clear();
                                 _controllerUser.clear();
+                                loginerror = "";
+                              }else{
+                                setState(() {
+                                  loginerror = "Usuário ou Senha inválidos";
+                                });
                               }
                             });
                           },

@@ -1,4 +1,4 @@
-import 'package:bshop/colors.dart';
+import 'package:bshop/Design/colors.dart';
 import 'package:bshop/pages/compras.dart';
 import 'package:bshop/pages/perfil.dart';
 import 'package:bshop/pages/mercados.dart';
