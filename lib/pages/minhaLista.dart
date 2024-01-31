@@ -88,17 +88,60 @@ class _MinhaListaState extends State<MinhaLista> {
   int rssiValue = 0;
   late Timer periodicTimer;  // Timer para verificações periódicas
 
+  _checkBluetoothResults(List<ScanResult> scanResults) {
+    bool esp32Found = false;
+    List<String> foundItems = [];
+
+    for (var result in scanResults) {
+      if (result.device.name?.toLowerCase() == 'esp32 beacon test' && result.rssi >= -50) {
+        esp32Found = true;
+        rssiValue = result.rssi;
+        itens = itens.map((item) => item.toLowerCase()).toList();
+
+        if (itens.contains('molho de tomate') && !itensMarcados.contains(itens.indexOf('molho de tomate'))) {
+          foundItems.add('molho de tomate');
+        }
+        if (itens.contains('macarrão parafuso') && !itensMarcados.contains(itens.indexOf('macarrão parafuso'))) {
+          foundItems.add('macarrão parafuso');
+        }
+
+        break;
+      }
+    }
+
+    if (esp32Found && foundItems.isNotEmpty) {
+      if (!popupDisplayed) {
+        _showDeviceFoundPopup(foundItems);
+        popupDisplayed = true;
+      }
+    } else {
+      popupDisplayed = false;
+    }
+
+    // Atualiza a AppBar com o valor rssi
+    setState(() {});
+  }
+
   _showDeviceFoundPopup(List<String> itemsToMark) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Dispositivo Encontrado'),
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Opa!', style: TextStyle(color: kPrimareColor, fontWeight: FontWeight.bold),),
+            ],
+          ),
           content: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text('Itens encontrados na lista:'),
+              Text('Neste corredor tem os seguintes itens da sua lista:',
+                style: TextStyle(
+                    color: kSecondaryColor,
+                    fontSize: 14, fontWeight: FontWeight.w500
+                ),),
               for (String item in itemsToMark) Text('- $item'),
             ],
           ),
@@ -121,12 +164,16 @@ class _MinhaListaState extends State<MinhaLista> {
                 // Força a reconstrução da árvore de widgets
                 setState(() {});
               },
-              child: Text('OK'),
+              child: Text('Adicionar',style: TextStyle(fontWeight: FontWeight.bold,
+                  color: kPrimareColor, fontSize: 17)),
             ),
           ],
         );
       },
-    );
+    ).then((value) {
+      // Resetar a variável popupDisplayed quando o pop-up for fechado
+      popupDisplayed = false;
+    });
   }
 
   @override
@@ -138,40 +185,13 @@ class _MinhaListaState extends State<MinhaLista> {
 
     // Inicia o timer para verificações periódicas
     periodicTimer = Timer.periodic(Duration(seconds: 3), (Timer timer) {
-      Get.find<BleController>().scanDevices();
-      Get.find<BleController>().scanResults.listen((List<ScanResult> scanResults) {
-        bool esp32Found = false;
-        List<String> foundItems = [];
+      if (!popupDisplayed) {
+        Get.find<BleController>().scanDevices();
+      }
+    });
 
-        for (var result in scanResults) {
-          if (result.device.name?.toLowerCase() == 'esp32 beacon test' && result.rssi >= -50) {
-            esp32Found = true;
-            rssiValue = result.rssi;  // Armazena o valor rssi
-            itens = itens.map((item) => item.toLowerCase()).toList();
-            // Verifica se "molho de tomate" ou "macarrão parafuso" estão na lista e não estão marcados
-            if (itens.contains('molho de tomate') && !itensMarcados.contains(itens.indexOf('molho de tomate'))) {
-              foundItems.add('molho de tomate');
-            }
-            if (itens.contains('macarrão parafuso') && !itensMarcados.contains(itens.indexOf('macarrão parafuso'))) {
-              foundItems.add('macarrão parafuso');
-            }
-
-            break;
-          }
-        }
-
-        if (esp32Found && foundItems.isNotEmpty) {
-          if (!popupDisplayed) {
-            _showDeviceFoundPopup(foundItems);
-            popupDisplayed = true;
-          }
-        } else {
-          popupDisplayed = false;
-        }
-
-        // Atualiza a AppBar com o valor rssi
-        setState(() {});
-      });
+    Get.find<BleController>().scanResults.listen((List<ScanResult> scanResults) {
+      _checkBluetoothResults(scanResults);
     });
   }
 
@@ -278,8 +298,8 @@ class _MinhaListaState extends State<MinhaLista> {
               title: Text(itens[index]),
               trailing: IconButton(
                 icon: itensMarcados.contains(index)
-                    ? Icon(Icons.check, color: Colors.blue) // Substituí por uma cor padrão, substitua conforme necessário
-                    : Icon(Icons.circle_outlined),
+                    ? Icon(Icons.check, color: kPrimareColor) // Substituí por uma cor padrão, substitua conforme necessário
+                    : Icon(Icons.circle_outlined, color: kSecondaryColor,),
                 onPressed: () {
                   setState(() {
                     if (itensMarcados.contains(index)) {

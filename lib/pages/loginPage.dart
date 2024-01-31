@@ -1,3 +1,4 @@
+import 'package:bshop/colors.dart';
 import 'package:bshop/pages/homePage.dart';
 import 'package:bshop/splashScreen.dart';
 import 'package:bshop/userLogin.dart';
@@ -123,7 +124,7 @@ class _LoginPageState extends State<LoginPage> {
                     Expanded(
                       child: ElevatedButton(
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(Color(0xffeb89b5))
+                          backgroundColor: MaterialStateProperty.all(kPrimareColor)
 
                         ),
                           onPressed: () {
@@ -152,7 +153,7 @@ class _LoginPageState extends State<LoginPage> {
               TextButton(
                   onPressed: (){},
                   child: Text(
-                    "Criar conta"
+                    "Criar conta", style: TextStyle(color: kSecondaryColor),
                   ))
             ],
           ),

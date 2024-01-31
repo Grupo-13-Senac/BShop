@@ -15,7 +15,7 @@ class Compras extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Lottie.asset('assets/animation_cart.json',height: 200),
+            Lottie.asset('assets/animation_cart_green.json',height: 200),
             Text('Você ainda não realizou compras!'),
           ],
         ),
