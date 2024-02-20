@@ -27,7 +27,6 @@ void setup() {
 
 void loop() {
   if (deviceConnected) {
-    pCharacteristic->setValue("Hello, mobile app!"); // Valor que será enviado para o aplicativo
     pCharacteristic->notify();
     delay(1000);
   }
