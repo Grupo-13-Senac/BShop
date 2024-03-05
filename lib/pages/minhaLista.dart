@@ -5,26 +5,8 @@ import 'package:flutter_blue/flutter_blue.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-// Importações necessárias para o código
 import 'package:bshop/Design/colors.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Minha Lista',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MinhaLista(),
-    );
-  }
-}
 
 class MinhaLista extends StatefulWidget {
   @override
@@ -37,10 +19,12 @@ class _MinhaListaState extends State<MinhaLista> {
   TextEditingController _controller = TextEditingController();
 
   _adicionarItem(String item) {
-    if (!itens.contains(item)) {
+    // Verifica se o item já está na lista, independentemente de maiúsculas ou minúsculas
+    if (!itens.any((existingItem) => existingItem.toLowerCase() == item.toLowerCase())) {
       setState(() {
         itens.add(item);
-        if (itensMarcados.contains(itens.length - 1)) {
+        // Verifica se o item não está marcado e, se não estiver, adiciona à lista de itens marcados
+        if (!itensMarcados.contains(item.toLowerCase())) {
           itensMarcados.remove(itens.length - 1);
         }
       });
@@ -53,7 +37,6 @@ class _MinhaListaState extends State<MinhaLista> {
     _controller.clear();
     Navigator.pop(context);
   }
-
   _saveList() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setStringList('itens', itens);
@@ -96,7 +79,7 @@ class _MinhaListaState extends State<MinhaLista> {
     ///Lista de itens listados pelo Beacon
     ///RSSI de distancia do Beacon
     for (var result in scanResults) {
-      if (result.device.name?.toLowerCase() == 'esp32 beacon test' && result.rssi >= -50) {
+      if (result.device.name?.toLowerCase() == 'esp32 beacon test' /*&& result.rssi <= -75*/) {
         esp32Found = true;
         rssiValue = result.rssi;
         itens = itens.map((item) => item.toLowerCase()).toList();
@@ -106,6 +89,9 @@ class _MinhaListaState extends State<MinhaLista> {
         }
         if (itens.contains('macarrão parafuso') && !itensMarcados.contains(itens.indexOf('macarrão parafuso'))) {
           foundItems.add('macarrão parafuso');
+        }
+        if (itens.contains('geleia') && !itensMarcados.contains(itens.indexOf('geleia'))) {
+          foundItems.add('geleia');
         }
 
         break;
@@ -266,14 +252,12 @@ class _MinhaListaState extends State<MinhaLista> {
       ),
       appBar: AppBar(
         backgroundColor: kPrimareColor,
-        title: /*Text(
-          'Minha Lista - RSSI: $rssiValue',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-        ),*/
-        Text(
-          'Minha Lista',
+        title: Text(
+          'Minha Lista' /*- RSSI: $rssiValue'*/,
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
+
+
       ),
       body: ListView.separated(
         itemCount: itens.length,

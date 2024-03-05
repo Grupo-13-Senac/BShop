@@ -27,7 +27,7 @@ List<String> sugestoes = [
   "Chá de erva-cidreira", "Chá de erva-doce", "Chá de capim-limão",
   "Chá de canela", "Chá de rooibos", "Chá de valeriana", "Chá de alcaçuz",
   "Chá de dente-de-leão", "Macarrão Parafuso", "Macarrão Espaguete",
-  "Massa de Lasanha", "Macarrão Instantâneo"
+  "Massa de Lasanha", "Macarrão Instantâneo", "Geleia"
 ];
 
 
