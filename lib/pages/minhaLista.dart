@@ -7,7 +7,6 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:bshop/Design/colors.dart';
 
-
 class MinhaLista extends StatefulWidget {
   @override
   _MinhaListaState createState() => _MinhaListaState();
@@ -253,7 +252,7 @@ class _MinhaListaState extends State<MinhaLista> {
       appBar: AppBar(
         backgroundColor: kPrimareColor,
         title: Text(
-          'Minha Lista' /*- RSSI: $rssiValue'*/,
+          'Minha Lista - RSSI: $rssiValue',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
 
